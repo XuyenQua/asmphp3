@@ -32,3 +32,5 @@
 
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link rel="stylesheet" href="{{ asset('theme/admin/assets/css/demo.css') }}" />
+
+@include('admin.layout.css')

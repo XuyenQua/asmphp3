@@ -30,6 +30,8 @@
 
  <!-- Kaiadmin JS -->
  <script src="{{ asset('theme/admin/assets/js/kaiadmin.min.js') }}"></script>
+ {{-- sweetalert2 js --}}
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
  <!-- Kaiadmin DEMO methods, don't include it in your project! -->
  <script src="{{ asset('theme/admin/assets/js/setting-demo.js') }}"></script>
@@ -62,6 +64,6 @@
          fillColor: "rgba(255, 165, 52, .14)",
      });
  </script>
-
+    @include('admin.layout.js')
 
 @yield('js')

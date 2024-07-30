@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+    private $data;
     /**
      * Display a listing of the resource.
      */
+    public function __construct(){
+        $this->data = [];
+    }
     public function index()
-    {
-        //
+    {   
+        $objPro = new Product();
+        $this->data['listPro'] = $objPro->getAll();
+        // dd($this->data);
+        return view('admin.product.index', $this->data);
     }
 
     /**
@@ -19,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
     /**
@@ -35,7 +44,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('admin.product.show',);
     }
 
     /**

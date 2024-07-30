@@ -1,15 +1,14 @@
 @extends('admin.master')
 
 @section('title')
-    Danh sách danh mục
+    Danh sách sản phẩm
 @endsection
 
 @section('content')
-   
     <div class="container">
         <div class="page-inner">
             <div class="page-header">
-                <h3 class="fw-bold mb-3">Danh mục</h3>
+                <h3 class="fw-bold mb-3">Sản phẩm</h3>
                 <ul class="breadcrumbs mb-3">
                     <li class="nav-home">
                         <a href="#">
@@ -20,7 +19,7 @@
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Danh Mục</a>
+                        <a href="#">Sản phẩm</a>
                     </li>
                     <li class="separator">
                         <i class="icon-arrow-right"></i>
@@ -36,13 +35,13 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Danh sách</h4>
+                                <h4 class="card-title">Danh sách sản phẩm</h4>
                                 {{-- <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal"
                                     data-bs-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Thêm mới
                                 </button> --}}
-                                <a class="btn btn-primary btn-round ms-auto" href="{{ route('admin.category.create') }}">
+                                <a class="btn btn-primary btn-round ms-auto" href="{{ route('admin.product.create') }}">
                                     <i class="fa fa-plus"></i>
                                     Thêm mới
                                 </a>
@@ -111,8 +110,10 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Hình Ảnh</th>
+                                            <th>Tên sản phẩm</th>
                                             <th>Tên danh mục</th>
-                                            <th>Ngày tạo</th>
+                                            <th>Giá</th>
+                                            <th>Só Lượng</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -120,21 +121,22 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Hình Ảnh</th>
+                                            <th>Tên sản phẩm</th>
                                             <th>Tên danh mục</th>
-                                            <th>Ngày tạo</th>
+                                            <th>Giá</th>
+                                            <th>Só Lượng</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach ($listCate as $item)
+                                        @foreach ($listPro as $item)
                                             <tr>
                                                 <td>{{ $item->id }}</td>
-                                                <td>
-                                                    <img src="{{ Storage::url($item->hinh_anh) }}" width="100"
-                                                        alt="">
-                                                </td>
-                                                <td>{{ $item->ten_danh_muc }}</td>
-                                                <td>{{ $item->created_at }}</td>
+                                                <td>{{ $item->hinh_anh }}</td>
+                                                <td>{{ $item->ten_san_pham }}</td>
+                                                <td>{{ $item->loadAllCategory->ten_danh_muc }}</td>
+                                                <td>{{ $item->gia }}</td>
+                                                <td>{{ $item->so_luong }}</td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         {{-- <button type="button" data-bs-toggle="tooltip" title=""
@@ -142,26 +144,19 @@
                                                             data-original-title="Edit Task">
                                                             <i class="fa fa-edit"></i>
                                                         </button> --}}
-                                                        <a class="btn btn-link btn-secondary btn-lg"
-                                                            href="{{ route('admin.category.show', $item->id) }}">
+                                                        <a class="btn btn-link btn-secondary btn-lg" href="{{ route('admin.category.show', $item->id) }}">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
-                                                        <a class="btn btn-link btn-primary btn-lg"
-                                                            href="{{ route('admin.category.edit', $item->id) }}">
+                                                        <a class="btn btn-link btn-primary btn-lg" href="{{ route('admin.category.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         {{-- <button type="button" data-bs-toggle="tooltip" title=""
                                                             class="btn btn-link btn-danger" data-original-title="Remove">
                                                             <i class="fa fa-times"></i>
                                                         </button> --}}
-                                                        <form id="myForm"
-                                                            action="{{ route('admin.category.destroy', ['id' => $item->id]) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn-delete"><i
-                                                                    class="fa fa-times"></i></button>
-                                                        </form>
+                                                        <a class="btn btn-link btn-danger" href="">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -201,28 +196,4 @@
             // });
         });
     </script>
-
-
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                title: "Thành Công",
-                text: "Xóa thành công",
-                icon: "success"
-            });
-        </script>
-    @endif
-
-    @if (session('error'))
-        <script>
-            Swal.fire({
-                title: "thất bại",
-                text: "xóa thất bại",
-                icon: "error"
-            });
-        </script>
-    @endif
-
-
-    
 @endsection
