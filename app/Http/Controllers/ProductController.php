@@ -12,11 +12,12 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function __construct(){
+    public function __construct()
+    {
         $this->data = [];
     }
     public function index()
-    {   
+    {
         $objPro = new Product();
         $this->data['listPro'] = $objPro->getAll();
         // dd($this->data);
@@ -44,7 +45,10 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.product.show',);
+        $objPro = new Product();
+        $this->data['pro'] = $objPro->getProductById($id);
+        // dd($this->data);
+        return view('admin.product.show',$this->data);
     }
 
     /**

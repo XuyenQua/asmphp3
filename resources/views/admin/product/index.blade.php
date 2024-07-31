@@ -132,10 +132,12 @@
                                         @foreach ($listPro as $item)
                                             <tr>
                                                 <td>{{ $item->id }}</td>
-                                                <td>{{ $item->hinh_anh }}</td>
+                                                <td>
+                                                    <img src="{{ Storage::url($item->hinh_anh) }}" width="100"alt="">
+                                                </td>
                                                 <td>{{ $item->ten_san_pham }}</td>
                                                 <td>{{ $item->loadAllCategory->ten_danh_muc }}</td>
-                                                <td>{{ $item->gia }}</td>
+                                                <td> {{ number_format($item->gia, 0, ',', '.') }} VNĐ</td>
                                                 <td>{{ $item->so_luong }}</td>
                                                 <td>
                                                     <div class="form-button-action">
@@ -144,19 +146,30 @@
                                                             data-original-title="Edit Task">
                                                             <i class="fa fa-edit"></i>
                                                         </button> --}}
-                                                        <a class="btn btn-link btn-secondary btn-lg" href="{{ route('admin.category.show', $item->id) }}">
+                                                        <a class="btn btn-link btn-secondary btn-lg"
+                                                            href="{{ route('admin.product.show', $item->id) }}">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
-                                                        <a class="btn btn-link btn-primary btn-lg" href="{{ route('admin.category.edit', $item->id) }}">
+                                                        <a class="btn btn-link btn-primary btn-lg"
+                                                            href="{{ route('admin.product.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         {{-- <button type="button" data-bs-toggle="tooltip" title=""
                                                             class="btn btn-link btn-danger" data-original-title="Remove">
                                                             <i class="fa fa-times"></i>
                                                         </button> --}}
-                                                        <a class="btn btn-link btn-danger" href="">
+                                                        {{-- <a class="btn btn-link btn-danger" href="">
                                                             <i class="fa fa-times"></i>
-                                                        </a>
+                                                        </a> --}}
+
+                                                        <form id="myForm"
+                                                            action="{{ route('admin.product.destroy', ['id' => $item->id]) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn-delete"><i
+                                                                    class="fa fa-times"></i></button>
+                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -196,4 +209,24 @@
             // });
         });
     </script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "Thành Công",
+                text: "Xóa thành công",
+                icon: "success"
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                title: "thất bại",
+                text: "xóa thất bại",
+                icon: "error"
+            });
+        </script>
+    @endif
 @endsection

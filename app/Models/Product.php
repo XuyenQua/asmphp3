@@ -20,5 +20,13 @@ class Product extends Model
         return $query;
     }
 
+    public function getProductById($id){
+        $query = Product::query()->with('loadAllCategory')->find($id);
+        return $query;
+    }
+
+    
+
+
 
 }
