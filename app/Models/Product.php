@@ -11,22 +11,49 @@ class Product extends Model
 
     protected $table = 'san_phams';
 
-    public function loadAllCategory(){
+    protected $fillable = [
+        'danh_muc_id',
+        'ten_san_pham',
+        'gia',
+        'so_luong',
+        'hinh_anh',
+        'mo_ta_ngan',
+        'chi_tiet_san_pham',
+        'created_at',
+        'updated_at',
+    ];
+
+
+    public function loadAllCategory()
+    {
         return $this->belongsTo(Category::class, 'danh_muc_id');
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         $query = Product::query()->with('loadAllCategory')->latest('id')->get();
         return $query;
     }
 
-    public function getProductById($id){
+    public function getProductById($id)
+    {
         $query = Product::query()->with('loadAllCategory')->find($id);
         return $query;
     }
 
-    
-
-
-
+    public function insertProduct($params)
+    {
+        $res = Product::create($params);
+        return $res;
+    }
+    public function updateProduct($params, $id)
+    {
+        $res = Product::find($id)->update($params);
+        return $res;
+    }
+    public function deleteProduct($id)
+    {
+        $res = Product::destroy($id);
+        return $res;
+    }
 }

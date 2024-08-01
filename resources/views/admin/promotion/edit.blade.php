@@ -2,14 +2,14 @@
 
 
 @section('title')
-    Sửa sản phẩm :{{ $pro->ten_san_pham }}
+    sửa khuyến mãi {{ $prom->ten_khuyen_mai }}
 @endsection
 
 @section('content')
     <div class="container">
         <div class="page-inner">
             <div class="page-header">
-                <h3 class="fw-bold mb-3">Sửa sản phẩm {{ $pro->ten_san_pham }}</h3>
+                <h3 class="fw-bold mb-3">sửa khuyến mãi</h3>
                 <ul class="breadcrumbs mb-3">
                     <li class="nav-home">
                         <a href="#">
@@ -20,110 +20,131 @@
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">sản phẩm</a>
+                        <a href="#">khuyến mãi</a>
                     </li>
                     <li class="separator">
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Sửa sản phẩm: {{ $pro->ten_san_pham }}</a>
+                        <a href="#">sửa khuyến mãi {{ $prom->ten_khuyen_mai }}</a>
                     </li>
                 </ul>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('admin.product.update', ['id' => $pro->id]) }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('admin.promotion.update',['id'=> $prom->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">
-                                    Sửa sản phẩm :{{ $pro->ten_san_pham }}
+                                    sửa khuyến mãi: {{ $prom->ten_khuyen_mai }}
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12 col-lg-6">
                                         <div class="form-group form-inline">
-                                            <label for="inlineinput" class="col-md-3 col-form-label">Tên sản phẩm</label>
+                                            <label for="inlineinput" class="col-md-3 col-form-label">Tên Khuyến mãi</label>
                                             <div class="col-md-9 p-0">
-                                                <input type="text" class="form-control input-full"
-                                                    value="{{ $pro->ten_san_pham }}" placeholder="" name="ten_san_pham" />
+                                                <input type="text" class="form-control input-full" placeholder=""
+                                                    name="ten_khuyen_mai" value="{{ $prom->ten_khuyen_mai }}" />
                                             </div>
-                                            @error('ten_san_pham')
-                                                <br>
-                                                <div class="alert alert-danger col-md-9">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                            <label for="danh_muc">Danh mục</label>
-                                            <select class="form-select " aria-label="Default select example"
-                                                name="danh_muc_id">
-                                                <option selected>Chọn danh mục</option>
-                                                @foreach ($listCate as $item)
-                                                    <option value="{{ $item->id }}"
-                                                        @if ($item->id == $pro->danh_muc_id) selected @endif>
-                                                        {{ $item->ten_danh_muc }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('danh_muc_id')
+                                            @error('ten_khuyen_mai')
                                                 <br>
                                                 <div class="alert alert-danger col-md-9">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group form-inline">
-                                            <label for="inlineinput" class="col-md-3 col-form-label">Giá </label>
+                                            <label for="inlineinput" class="col-md-3 col-form-label">Mã Khuyến mãi</label>
                                             <div class="col-md-9 p-0">
                                                 <input type="text" class="form-control input-full"
-                                                    value="{{ $pro->gia }}" placeholder="" name="gia" />
+                                                    placeholder="VD : MA12" name="ma_khuyen_mai"
+                                                    value="{{ $prom->ma_khuyen_mai }}" />
                                             </div>
-                                            @error('gia')
+                                            @error('ma_khuyen_mai')
                                                 <br>
                                                 <div class="alert alert-danger col-md-9">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                        <div class="form-group form-inline">
+                                            <label for="inlineinput" class="col-md-3 col-form-label">Loại Khuyến mãi</label>
+                                            <div class="col-md-9 p-0">
+                                                <select class="form-select" name="loai_khuyen_mai"
+                                                    aria-label="Default select example">
+                                                    <option value="gia_tri" @if ($prom->loai_khuyen_mai == 'gia_tri') selected @endif>Giá trị</option>
+                                                    <option value="phan_tram" @if ($prom->loai_khuyen_mai == 'phan_tram') selected @endif>Phần trăm</option>
+                                                </select>
+
+                                            </div>
+                                            @error('loai_khuyen_mai')
+                                                <br>
+                                                <div class="alert alert-danger col-md-9">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group form-inline">
+                                            <label for="inlineinput" class="col-md-3 col-form-label">Giá Trị</label>
+                                            <div class="col-md-9 p-0">
+                                                <input type="number" class="form-control input-full" placeholder="VD : 12"
+                                                    name="gia_tri" value="{{ $prom->gia_tri }}" />
+                                                <small id="emailHelp" class="form-text text-muted">
+                                                    Khi chọn loại khuyến mãi là giá trị có thể nhập số trên 100.
+                                                </small><br>
+                                                <small id="emailHelp" class="form-text text-muted">
+                                                    khi chọn loại khuyến mãi là phần trăm nhập số trong khoảng 1 đến
+                                                    100
+                                                </small>
+                                            </div>
+                                            @error('gia_tri')
+                                                <br>
+                                                <div class="alert alert-danger col-md-9">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-6">
                                         <div class="form-group form-inline">
                                             <label for="inlineinput" class="col-md-3 col-form-label">Số lượng</label>
                                             <div class="col-md-9 p-0">
-                                                <input type="text" class="form-control input-full"
-                                                    value="{{ $pro->so_luong }}" placeholder="" name="so_luong" />
+                                                <input type="number" class="form-control input-full" placeholder="VD : 12"
+                                                    name="so_luong"  value="{{ $prom->so_luong }}"/>
                                             </div>
                                             @error('so_luong')
                                                 <br>
                                                 <div class="alert alert-danger col-md-9">{{ $message }}</div>
                                             @enderror
                                         </div>
-
-
-                                    </div>
-                                    <div class="col-md-12 col-lg-6">
-                                        <div class="form-group">
-                                            <label for="exampleFormControlFile1">Chọn ảnh</label><br>
-                                            <input type="file" class="form-control-file" name="hinh_anh" />
-                                            <img src="{{ Storage::url($pro->hinh_anh) }}" width="100" alt="">
-                                            @error('hinh_anh')
+                                        <div class="form-group form-inline">
+                                            <label for="inlineinput" class="col-md-3 col-form-label">Ngày bắt đầu</label>
+                                            <div class="col-md-9 p-0">
+                                                <input type="date" class="form-control input-full" id="ngay_bat_dau"
+                                                    placeholder="VD : 12" name="ngay_bat_dau" value="{{ $prom->ngay_bat_dau }}"/>
+                                            </div>
+                                            @error('ngay_bat_dau')
+                                                <br>
+                                                <div class="alert alert-danger col-md-9">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group form-inline">
+                                            <label for="inlineinput" class="col-md-3 col-form-label">Ngày kêt thúc</label>
+                                            <div class="col-md-9 p-0">
+                                                <input type="date" class="form-control input-full" id="ngay_ket_thuc"
+                                                    placeholder="VD : 12" name="ngay_ket_thuc" value="{{ $prom->ngay_ket_thuc }}"/>
+                                            </div>
+                                            @error('ngay_ket_thuc')
                                                 <br>
                                                 <div class="alert alert-danger col-md-9">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group col-md-9">
-                                            <label for="comment">Mô tả ngắn</label>
-                                            <textarea class="form-control" name="mo_ta_ngan" rows="3">{{ $pro->mo_ta_ngan }}</textarea>
-                                            @error('mo_ta_ngan')
-                                                <br>
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-9">
-                                            <label for="comment">Chi tiết sản phẩm</label>
-                                            <textarea class="form-control" name="chi_tiet_san_pham" rows="5">{{ $pro->chi_tiet_san_pham }}</textarea>
-                                            @error('chi_tiet_san_pham')
+                                            <label for="comment">Mô tả</label>
+                                            <textarea class="form-control" name="mo_ta" rows="5">{{ $prom->mo_ta }}</textarea>
+                                            @error('mo_ta')
                                                 <br>
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="card-action">
@@ -134,7 +155,7 @@
                                 <button class="btn btn-danger" type="button">
                                     Cancel
                                 </button>
-                                <a class="btn btn-secondary" href="{{ route('admin.product.index') }}">
+                                <a class="btn btn-secondary" href="{{ route('admin.promotion.index') }}">
                                     Danh sách
                                 </a>
                             </div>

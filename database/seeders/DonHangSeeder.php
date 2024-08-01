@@ -21,6 +21,7 @@ class DonHangSeeder extends Seeder
                 'ngay_dat'=> fake()->date(),
                 'tong_tien'=> rand(100000, 10000000),
                 'phuong_thuc_thanh_toan'=> rand(1,4),
+                'khuyen_mai'=> rand(1,4),
                 'trang_thai_id'=> rand(1,10),
                 'created_at' => now(),
                 'updated_at' => now(),

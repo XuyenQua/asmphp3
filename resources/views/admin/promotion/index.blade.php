@@ -1,14 +1,14 @@
 @extends('admin.master')
 
 @section('title')
-    Danh sách sản phẩm
+    Danh sách Khuyến mãi
 @endsection
 
 @section('content')
     <div class="container">
         <div class="page-inner">
             <div class="page-header">
-                <h3 class="fw-bold mb-3">Sản phẩm</h3>
+                <h3 class="fw-bold mb-3"></h3>
                 <ul class="breadcrumbs mb-3">
                     <li class="nav-home">
                         <a href="#">
@@ -19,13 +19,13 @@
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Sản phẩm</a>
+                        <a href="#">Khuyến mãi</a>
                     </li>
                     <li class="separator">
                         <i class="icon-arrow-right"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Danh sách</a>
+                        <a href="#">Danh sách Khuyến mãi</a>
                     </li>
                 </ul>
             </div>
@@ -35,13 +35,13 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Danh sách sản phẩm</h4>
+                                <h4 class="card-title">Danh sách Khuyến mãi</h4>
                                 {{-- <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal"
                                     data-bs-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
                                     Thêm mới
                                 </button> --}}
-                                <a class="btn btn-primary btn-round ms-auto" href="{{ route('admin.product.create') }}">
+                                <a class="btn btn-primary btn-round ms-auto" href="{{ route('admin.promotion.create') }}">
                                     <i class="fa fa-plus"></i>
                                     Thêm mới
                                 </a>
@@ -109,36 +109,45 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Hình Ảnh</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Tên danh mục</th>
-                                            <th>Giá</th>
-                                            <th>Só Lượng</th>
+                                            <th>Tên khuyên mãi</th>
+                                            <th>Mã khuyên mãi</th>
+
+                                            <th>Giá Trị</th>
+                                            <th>Số lượng</th>
+                                            <th>Ngày bắt đầu</th>
+                                            <th>Ngày kết thúc</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Hình Ảnh</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Tên danh mục</th>
-                                            <th>Giá</th>
-                                            <th>Só Lượng</th>
+                                            <th>Tên khuyên mãi</th>
+                                            <th>Mã khuyên mãi</th>
+
+                                            <th>Giá Trị</th>
+                                            <th>Số lượng</th>
+                                            <th>Ngày bắt đầu</th>
+                                            <th>Ngày kết thúc</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach ($listPro as $item)
+                                        @foreach ($listProm as $item)
                                             <tr>
                                                 <td>{{ $item->id }}</td>
+                                                <td>{{ $item->ten_khuyen_mai }}</td>
+                                                <td>{{ $item->ma_khuyen_mai }}</td>
                                                 <td>
-                                                    <img src="{{ Storage::url($item->hinh_anh) }}" width="100"alt="">
+                                                    @if ($item->loai_khuyen_mai == 'gia_tri')
+                                                        {{ number_format($item->gia_tri, 0, ',', '.') }} VNĐ
+                                                    @endif
+                                                    @if ($item->loai_khuyen_mai == 'phan_tram')
+                                                        {{ $item->gia_tri }} %
+                                                    @endif
                                                 </td>
-                                                <td>{{ $item->ten_san_pham }}</td>
-                                                <td>{{ $item->loadAllCategory->ten_danh_muc }}</td>
-                                                <td> {{ number_format($item->gia, 0, ',', '.') }} VNĐ</td>
                                                 <td>{{ $item->so_luong }}</td>
+                                                <td>{{ $item->ngay_bat_dau }}</td>
+                                                <td>{{ $item->ngay_ket_thuc }}</td>
                                                 <td>
                                                     <div class="form-button-action">
                                                         {{-- <button type="button" data-bs-toggle="tooltip" title=""
@@ -147,23 +156,19 @@
                                                             <i class="fa fa-edit"></i>
                                                         </button> --}}
                                                         <a class="btn btn-link btn-secondary btn-lg"
-                                                            href="{{ route('admin.product.show', $item->id) }}">
+                                                            href="{{ route('admin.promotion.show', $item->id) }}">
                                                             <i class="fa fa-eye"></i>
                                                         </a>
                                                         <a class="btn btn-link btn-primary btn-lg"
-                                                            href="{{ route('admin.product.edit', $item->id) }}">
+                                                            href="{{ route('admin.promotion.edit', $item->id) }}">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
                                                         {{-- <button type="button" data-bs-toggle="tooltip" title=""
                                                             class="btn btn-link btn-danger" data-original-title="Remove">
                                                             <i class="fa fa-times"></i>
                                                         </button> --}}
-                                                        {{-- <a class="btn btn-link btn-danger" href="">
-                                                            <i class="fa fa-times"></i>
-                                                        </a> --}}
-
                                                         <form id="myForm"
-                                                            action="{{ route('admin.product.destroy', ['id' => $item->id]) }}"
+                                                            action="{{ route('admin.promotion.destroy', ['id' => $item->id]) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')
@@ -210,6 +215,7 @@
         });
     </script>
 
+
     @if (session('success'))
         <script>
             Swal.fire({
@@ -233,8 +239,8 @@
     @if (session('info'))
         <script>
             Swal.fire({
-                title: "Sản phẩm không tồn tại",
-                text: "Không tìm thấy Sản phẩm",
+                title: "khuyến mãi không tồn tại",
+                text: "Không tìm thấy khuyến mãi",
                 icon: "info"
             });
         </script>

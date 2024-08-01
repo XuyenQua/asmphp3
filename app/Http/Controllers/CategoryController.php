@@ -27,15 +27,16 @@ class CategoryController extends Controller
         return view("admin.category.index", $this->data);
     }
 
-    public function uploadFile($file){
-        $fileName = time().'_'.$file->getClientOriginalName();
-        return $file->storeAs('category_image', $fileName,'public');
+    public function uploadFile($file)
+    {
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        return $file->storeAs('category_image', $fileName, 'public');
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    { 
+    {
         return view("admin.category.create");
     }
 
@@ -44,7 +45,7 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreCategoryRequest $request)
-    {   
+    {
 
         $dataCate = $request->except('hinh_anh');
         if ($request->hasFile('hinh_anh') && $request->file('hinh_anh')->isValid()) {
@@ -52,10 +53,10 @@ class CategoryController extends Controller
         }
         $objCate = new Category();
         $res = $objCate->insertCategory($dataCate);
-        if($res){
-            return redirect()->route('admin.category.create')->with('success','Thêm mới thành công');
-        }else{
-            return redirect()->route('admin.category.create')->with('error','Thêm mới thất bại');
+        if ($res) {
+            return redirect()->route('admin.category.create')->with('success', 'Thêm mới thành công');
+        } else {
+            return redirect()->route('admin.category.create')->with('error', 'Thêm mới thất bại');
         }
         // dd($request->all());
 
@@ -69,7 +70,12 @@ class CategoryController extends Controller
         $objCate = new Category();
         $this->data["Cate"] = $objCate->getById($id);
         // dd($this->data);
-        return view("admin.category.show", $this->data);
+        if ($this->data["Cate"]) {
+            return view("admin.category.show", $this->data);
+        }else{
+            return redirect()->route("admin.category.index")->with('info','danh mục không tồn tại');
+        }
+
     }
 
     /**
@@ -80,7 +86,11 @@ class CategoryController extends Controller
         $objCate = new Category();
         $this->data["Cate"] = $objCate->getById($id);
         // dd($this->data);
-        return view("admin.category.edit", $this->data);
+        if ($this->data["Cate"]) {
+            return view("admin.category.edit", $this->data);
+        }else{
+            return redirect()->route("admin.category.index")->with('info','danh mục không tồn tại');
+        }
     }
 
     /**
@@ -93,22 +103,22 @@ class CategoryController extends Controller
         $imageOld = $check->hinh_anh;
         $dataCate = $request->except("hinh_anh");
         if ($check) {
-            if ($request->hasFile('hinh_anh')&& $request->file('hinh_anh')->isValid()) {
+            if ($request->hasFile('hinh_anh') && $request->file('hinh_anh')->isValid()) {
                 $dataCate['hinh_anh'] = $this->uploadFile($request->file('hinh_anh'));
                 $res = $objCate->updateCategory($dataCate, $id);
                 if ($res) {
-                    if (isset($imageOld)&& Storage::disk('public')->exists($imageOld)) {
+                    if (isset($imageOld) && Storage::disk('public')->exists($imageOld)) {
                         Storage::disk('public')->delete($imageOld);
                     }
                 }
-                return redirect()->route('admin.category.edit',['id'=>$id])->with('success','Sửa thành công');
-            }else{
+                return redirect()->route('admin.category.edit', ['id' => $id])->with('success', 'Sửa thành công');
+            } else {
                 $dataCate['hinh_anh'] = $imageOld;
                 $res = $objCate->updateCategory($dataCate, $id);
-                return redirect()->route('admin.category.edit',['id'=>$id])->with('success','Sửa thành công');
+                return redirect()->route('admin.category.edit', ['id' => $id])->with('success', 'Sửa thành công');
             }
-        }else{
-            return redirect()->back()->with('error','Không tìm thấy danh mục');
+        } else {
+            return redirect()->back()->with('error', 'Không tìm thấy danh mục');
         }
     }
 
@@ -124,17 +134,15 @@ class CategoryController extends Controller
             $res = $objCate->deleteCategory($id);
 
             if ($res) {
-                if (isset($imageOld)&& Storage::disk('public')->exists($imageOld)) {
+                if (isset($imageOld) && Storage::disk('public')->exists($imageOld)) {
                     Storage::disk('public')->delete($imageOld);
                 }
-                return redirect()->route('admin.category.index')->with('success','Xóa thành công');
+                return redirect()->route('admin.category.index')->with('success', 'Xóa thành công');
             } else {
-                return redirect()->route('admin.category.index')->with('error','Xóa thất bại');
+                return redirect()->route('admin.category.index')->with('error', 'Xóa thất bại');
             }
-            
-        }else{
-            return redirect()->route('admin.category.index')->with('error','Xóa thất bại');
+        } else {
+            return redirect()->route('admin.category.index')->with('error', 'Xóa thất bại');
         }
-
     }
 }

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->double('tong_tien');
             $table->unsignedBigInteger('phuong_thuc_thanh_toan');
             $table->foreign('phuong_thuc_thanh_toan')->references('id')->on('phuong_thuc_thanh_toans');
+            $table->unsignedBigInteger('khuyen_mai');
+            $table->foreign('khuyen_mai')->references('id')->on('khuyen_mais');
             $table->unsignedBigInteger('trang_thai_id');
             $table->foreign('trang_thai_id')->references('id')->on('trang_thais');
             $table->timestamps();

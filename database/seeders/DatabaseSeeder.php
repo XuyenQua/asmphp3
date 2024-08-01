@@ -23,13 +23,14 @@ class DatabaseSeeder extends Seeder
             TrangThaiSeeder::class,
             VaiTroSeeder::class,
             DanhMucSeeder::class,
+            KhuyenMaiSeeder::class,
             SanPhamSeeder::class,
             NguoiDungSeeder::class,
             PhuongThucThanhToanSeeder::class,
             DonHangSeeder::class,
             ChiTietDonHangSeeder::class,
             GioHangSeeder::class,
-            KhuyenMaiSeeder::class,
+           
           
         ]);
     }

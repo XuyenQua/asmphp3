@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-   
     <div class="container">
         <div class="page-inner">
             <div class="page-header">
@@ -223,6 +222,13 @@
         </script>
     @endif
 
-
-    
+    @if (session('info'))
+        <script>
+            Swal.fire({
+                title: "Danh mục không tồn tại",
+                text: "Không tìm thấy danh mục",
+                icon: "info"
+            });
+        </script>
+    @endif
 @endsection

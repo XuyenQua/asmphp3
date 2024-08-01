@@ -43,6 +43,13 @@
                     </a>
                 </li>
                 <hr>
+                <li class="nav-item ">
+                    <a  href="{{ route('admin.promotion.index') }}"  aria-expanded="false">
+                        <i class="fas fa-layer-group"></i>
+                        <p>khuyến mãi</p>
+                    </a>
+                </li>
+                <hr>
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
