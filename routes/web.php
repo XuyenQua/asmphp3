@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BillController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -109,6 +110,27 @@ Route::prefix('admin/')
                 Route::get('{id}/show', 'show')
                     ->name('show');
             });
+            Route::controller(BillController::class)
+            ->name('bil.')
+            ->prefix('bil/')
+            ->group(function () {
+                Route::get('/', 'index')
+                    ->name('index');
+                Route::get('create', 'create')
+                    ->name('create');
+                Route::post('store', 'store')
+                    ->name('store');
+                Route::get('{id}/edit', 'edit')
+                    ->name('edit');
+                Route::put('{id}/update', 'update')
+                    ->name('update');
+                Route::delete('{id}/destroy', 'destroy')
+                    ->name('destroy');
+                Route::get('{id}/show', 'show')
+                    ->name('show');
+            });
+
+
         Route::controller(UserController::class)
             ->name('user.')
             ->prefix('user/')

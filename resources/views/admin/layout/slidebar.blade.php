@@ -3,7 +3,8 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="{{ route('admin.index') }}" class="logo">
-                <img src="{{ asset('theme/admin/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand" height="20" />
+                <img src="{{ asset('theme/admin/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand"
+                    class="navbar-brand" height="20" />
             </a>
             <div class="nav-toggle">
                 <button class="btn btn-toggle toggle-sidebar">
@@ -23,30 +24,44 @@
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
                 <li class="nav-item ">
-                    <a  href="{{ route('admin.index') }}"  aria-expanded="false">
+                    <a href="{{ route('admin.index') }}" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <hr>
                 <li class="nav-item ">
-                    <a  href="{{ route('admin.category.index') }}"  aria-expanded="false">
+                    <a href="{{ route('admin.category.index') }}" aria-expanded="false">
                         <i class="fa fa-layer-group"></i>
                         <p>Danh Mục</p>
                     </a>
                 </li>
                 <hr>
                 <li class="nav-item ">
-                    <a  href="{{ route('admin.product.index') }}"  aria-expanded="false">
+                    <a href="{{ route('admin.product.index') }}" aria-expanded="false">
                         <i class="fas fa-layer-group"></i>
                         <p>Sản phẩm</p>
                     </a>
                 </li>
                 <hr>
                 <li class="nav-item ">
-                    <a  href="{{ route('admin.promotion.index') }}"  aria-expanded="false">
+                    <a href="{{ route('admin.promotion.index') }}" aria-expanded="false">
                         <i class="fas fa-layer-group"></i>
                         <p>khuyến mãi</p>
+                    </a>
+                </li>
+                <hr>
+                <li class="nav-item ">
+                    <a href="{{ route('admin.banner.index') }}" aria-expanded="false">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Banner</p>
+                    </a>
+                </li>
+                <hr>
+                <li class="nav-item ">
+                    <a href="{{ route('admin.bill.index') }}" aria-expanded="false">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Hóa đơn</p>
                     </a>
                 </li>
                 <hr>
