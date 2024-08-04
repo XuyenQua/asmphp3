@@ -2,6 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\TrustProxies;
+use App\Http\Middleware\AdminAuthenicate;
+use App\Http\Middleware\EmployeeAuthenicate;
+
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -53,6 +57,8 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
+        'employee' => EmployeeAuthenicate::class,
+        'admin' => AdminAuthenicate::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

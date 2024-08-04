@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('hinh_anh');
             $table->text('mo_ta_ngan');
             $table->longText('chi_tiet_san_pham');
+            $table->unsignedInteger('luot_xem')->default(0);
             $table->timestamps();
         });
     }

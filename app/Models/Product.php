@@ -19,6 +19,7 @@ class Product extends Model
         'hinh_anh',
         'mo_ta_ngan',
         'chi_tiet_san_pham',
+        'luot_xem',
         'created_at',
         'updated_at',
     ];

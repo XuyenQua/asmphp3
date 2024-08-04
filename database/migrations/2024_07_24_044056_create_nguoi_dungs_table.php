@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('vai_tro_id');
             $table->foreign('vai_tro_id')->references('id')->on('vai_tros');
-            $table->string('ten_nguoi_dung')->unique()->nullable();
+            $table->string('ten_nguoi_dung')->nullable();
             $table->string('mat_khau');
-            $table->string('ho_ten');
             $table->string('email');
-            $table->string('so_dien_thoai');
-            $table->text('dia_chi');
+            $table->string('so_dien_thoai')->nullable();
+            $table->text('dia_chi')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

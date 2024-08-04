@@ -18,10 +18,9 @@ class NguoiDungSeeder extends Seeder
 
         for ($i=1; $i <=10 ; $i++) { 
             $nguoi_dungs[] = [
-                'vai_tro_id' => rand(1,10),
+                'vai_tro_id' => 1,
                 'ten_nguoi_dung' => fake()->userName(),
                 'mat_khau' =>  Hash::make('password'),
-                'ho_ten' => 'nguyen van '.$i,
                 'email' => fake()->unique()->safeEmail(),
                 'so_dien_thoai'=> fake()->phoneNumber(),
                 'dia_chi'=> fake()->address(),
