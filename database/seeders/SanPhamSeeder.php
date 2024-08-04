@@ -21,7 +21,7 @@ class SanPhamSeeder extends Seeder
                 'ten_san_pham' => 'san pham '.$i,
                 'gia' =>  rand(100000,10000000),
                 'so_luong' => fake()->randomNumber(),
-                'hinh_anh' => fake()->imageUrl(),
+                'hinh_anh' => 'product_image/1722744250_Astronaut.jpg',
                 'mo_ta_ngan'=> fake()->text(),
                 'chi_tiet_san_pham'=> fake()->text(),
                 'created_at' => now(),

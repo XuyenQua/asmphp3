@@ -44,5 +44,9 @@ class Banner extends Model
         return $res;
     }
 
+    public function getByViTri($vi_tri){
+        $query = Banner::where('vi_tri',$vi_tri)->get();
+        return $query;
+    }
 
 }

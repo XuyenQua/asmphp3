@@ -22,7 +22,6 @@ class Promotion extends Model
         'ngay_bat_dau',
         'ngay_ket_thuc',
         'mo_ta',
-        'trang_thai_id',
         'khuyen_mais.created_at as created_at',
         'khuyen_mais.updated_at as updated_at',
     ] ;
@@ -45,7 +44,6 @@ class Promotion extends Model
     }
     
     public function createPromotion($params){
-        $params['trang_thai_id'] =  1;
         $res = Promotion::create($params);
         return $res;
     }

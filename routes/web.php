@@ -25,6 +25,14 @@ use App\Http\Controllers\PromotionController;
 
 Route::prefix('/')->group(function () {
     Route::get('/', [ClientController::class, 'index'])->name('index');
+    Route::get('/cart', [ClientController::class, 'cart'])->name('cart');
+    Route::get('/shop', [ClientController::class, 'shop'])->name('shop');
+    Route::get('/{id}/client_category', [ClientController::class, 'client_category'])->name('client_category');
+    Route::get('/checkout', [ClientController::class, 'checkout'])->name('checkout');
+    Route::get('/{id}/pro_detail', [ClientController::class,'pro_detail'])->name('pro_detail');
+    Route::get('/client/login', [ClientController::class,'client_login'])->name('client_login');
+
+
 });
 
 Route::get('/register', [UserController::class, 'register'])->name('register');

@@ -6,7 +6,7 @@
                  <div class="breadcrumb__text">
                      <h2>@yield('title')</h2>
                      <div class="breadcrumb__option">
-                         <a href="./index.html">Home</a>
+                         <a href="{{ route('index') }}">Home</a>
                          <span>@yield('title')</span>
                      </div>
                  </div>

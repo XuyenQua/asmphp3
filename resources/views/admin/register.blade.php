@@ -20,8 +20,8 @@
                     <div class="col-md-8 col-lg-6 col-xxl-3">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="{{ asset('theme/login_reg/assets/images/logos/dark-logo.svg') }}"
+                                <a href="{{ route('index') }}" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                    <img src="{{ asset('theme/client/img/logo.png') }}"
                                         width="180" alt="">
                                 </a>
                                 <p class="text-center">Your Social Campaigns</p>
@@ -59,7 +59,7 @@
                                         Up</button>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
-                                        <a class="text-primary fw-bold ms-2" href="#">Sign
+                                        <a class="text-primary fw-bold ms-2" href="{{ route('client_login') }}">Sign
                                             In</a>
                                     </div>
                                 </form>

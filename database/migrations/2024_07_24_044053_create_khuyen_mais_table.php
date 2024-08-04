@@ -21,8 +21,6 @@ return new class extends Migration
             $table->date('ngay_bat_dau');
             $table->date('ngay_ket_thuc');
             $table->string('mo_ta')->nullable();
-            $table->unsignedBigInteger('trang_thai_id');
-            $table->foreign('trang_thai_id')->references('id')->on('trang_thais');
             $table->timestamps();
         });
     }

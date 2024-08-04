@@ -13,16 +13,28 @@ class VaiTroSeeder extends Seeder
      */
     public function run(): void
     {
-        $vaitros = [];
-
-        for ($i=1; $i <=10 ; $i++) { 
-            $vaitros[] = [
-                'ten_vai_tro' => 'vai tro '.$i,
-                'quyen_truy_cap' => rand(1,7),
+        $vaitros = [
+            [
+                'ten_vai_tro' => 'người dùng',
+                'quyen_truy_cap' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
-            ];
-        };
+            ],
+            [
+                'ten_vai_tro' => 'Nhân viên',
+                'quyen_truy_cap' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'ten_vai_tro' => 'Admin',
+                'quyen_truy_cap' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ];
+
+        
 
         DB::table("vai_tros")->insert($vaitros);
 

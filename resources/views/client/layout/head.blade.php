@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
 <!-- Css Styles -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="theme/client/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="theme/client/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="theme/client/css/elegant-icons.css" type="text/css">
@@ -17,3 +18,5 @@
 <link rel="stylesheet" href="theme/client/css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="theme/client/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="theme/client/css/style.css" type="text/css">
+
+

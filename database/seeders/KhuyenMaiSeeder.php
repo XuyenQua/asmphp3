@@ -25,7 +25,6 @@ class KhuyenMaiSeeder extends Seeder
                 'ngay_bat_dau'=> fake()->date(),
                 'ngay_ket_thuc'=> fake()->date(),
                 'mo_ta'=> fake()->text(),
-                'trang_thai_id'=> rand(1,10),
                 'created_at' => now(),
                 'updated_at' => now(),
             ];

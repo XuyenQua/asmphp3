@@ -111,6 +111,7 @@
                                             <th>Id</th>
                                             <th>Hình Ảnh</th>
                                             <th>Tên banner</th>
+                                            <th>Vị Trí</th>
                                             <th>Ngày tạo</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
@@ -119,7 +120,8 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Hình Ảnh</th>
-                                            <th>Tên danh mục</th>
+                                            <th>Tên banner</th>
+                                            <th>Vị Trí</th>
                                             <th>Ngày tạo</th>
                                             <th>Action</th>
                                         </tr>
@@ -133,6 +135,7 @@
                                                         alt="">
                                                 </td>
                                                 <td>{{ $item->ten_banner }}</td>
+                                                <td>{{ $item->vi_tri }}</td>
                                                 <td>{{ $item->created_at }}</td>
                                                 <td>
                                                     <div class="form-button-action">
