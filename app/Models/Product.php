@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -36,10 +39,57 @@ class Product extends Model
         return $query;
     }
 
+    public function loadDataWithPager()
+    {
+
+        $query = Product::query()
+            ->with('loadAllCategory')
+            ->latest('id')
+            ->paginate(10);
+        return $query;
+    }
+    public function loadLatestProducts()
+    {
+
+        $query = Product::query()
+            ->with('loadAllCategory')
+            ->latest('id')
+            ->take(9)
+            ->get()
+            ->toArray();
+        return $query;
+    }
+
+    public function loadHotProducts()
+    {
+
+        $query = Product::query()
+            ->with('loadAllCategory')
+            ->latest('luot_xem')
+            ->take(9)
+            ->get()
+            ->toArray();
+        return $query;
+    }
+
+
     public function getProductById($id)
     {
         $query = Product::query()->with('loadAllCategory')->find($id);
         return $query;
+    }
+    public function getProductByCategoryId($id)
+    {
+        $query = Product::query()->with('loadAllCategory')->where('danh_muc_id', $id)->latest('id')->take(4)->get();
+        return $query;
+    }
+    public function getAllProductsByCategoryId($id){
+        $query = Product::query()->with('loadAllCategory')->where('danh_muc_id', $id)->latest('id')->paginate(10);
+        return $query;
+    }
+
+    public function upViewProduct($id){
+        Product::where('id', $id)->increment('luot_xem');
     }
 
     public function insertProduct($params)

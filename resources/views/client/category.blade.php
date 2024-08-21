@@ -2,7 +2,7 @@
 
 
 @section('title')
-    shop
+    Danh mục {{$cate->ten_danh_muc}}
 @endsection
 
 
@@ -32,7 +32,6 @@
                                 <h4>Latest Products</h4>
                                 <div class="latest-product__slider owl-carousel">
                                     @foreach ($latestProducts as $item)
-                                        
                                         <div class="latest-prdouct__slider__item">
                                             <a href="{{ route('pro_detail', ['id' => $item[0]['id']]) }}"
                                                 class="latest-product__item">

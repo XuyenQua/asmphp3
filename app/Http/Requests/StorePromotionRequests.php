@@ -24,7 +24,7 @@ class StorePromotionRequests extends FormRequest
         if ($this->loai_khuyen_mai == 'gia_tri') {
             return [
                 "ten_khuyen_mai" => ["required", "string", "max:255"],
-                'ma_khuyen_mai' => ['required', 'string', 'between:4,12', 'regex:/^[a-zA-Z0-9]+$/'],
+                'ma_khuyen_mai' => ['required', 'string', 'between:3,12', 'regex:/^[a-zA-Z0-9]+$/'],
                 'loai_khuyen_mai' => ['required', 'string', 'in:gia_tri,phan_tram'],
                 'gia_tri' => ['required', 'numeric', 'min:1'],
                 'so_luong' => ['required', 'numeric', 'min:1'],
@@ -36,7 +36,7 @@ class StorePromotionRequests extends FormRequest
         } elseif ($this->loai_khuyen_mai == 'phan_tram') {
             return [
                 "ten_khuyen_mai" => ["required", "string", "max:255"],
-                'ma_khuyen_mai' => ['required', 'string', 'between:4,12', 'regex:/^[a-zA-Z0-9]+$/'],
+                'ma_khuyen_mai' => ['required', 'string', 'between:3,12', 'regex:/^[a-zA-Z0-9]+$/'],
                 'loai_khuyen_mai' => ['required', 'string', 'in:gia_tri,phan_tram'],
                 'gia_tri' => ['required', 'numeric', 'min:1', 'max:100'],
                 'so_luong' => ['required', 'numeric', 'min:1'],
@@ -48,7 +48,7 @@ class StorePromotionRequests extends FormRequest
         } else {
             return [
                 "ten_khuyen_mai" => ["required", "string", "max:255"],
-                'ma_khuyen_mai' => ['required', 'string', 'between:4,12', 'regex:/^[a-zA-Z0-9]+$/'],
+                'ma_khuyen_mai' => ['required', 'string', 'between:3,12', 'regex:/^[a-zA-Z0-9]+$/'],
                 'loai_khuyen_mai' => ['required', 'string', 'in:gia_tri,phan_tram'],
                 'gia_tri' => ['required', 'numeric'],
                 'so_luong' => ['required', 'numeric', 'min:1'],

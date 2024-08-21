@@ -10,13 +10,15 @@
 
 <!-- Css Styles -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="theme/client/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="theme/client/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet" href="theme/client/css/elegant-icons.css" type="text/css">
-<link rel="stylesheet" href="theme/client/css/nice-select.css" type="text/css">
-<link rel="stylesheet" href="theme/client/css/jquery-ui.min.css" type="text/css">
-<link rel="stylesheet" href="theme/client/css/owl.carousel.min.css" type="text/css">
-<link rel="stylesheet" href="theme/client/css/slicknav.min.css" type="text/css">
-<link rel="stylesheet" href="theme/client/css/style.css" type="text/css">
+<link rel="stylesheet" href="{{asset('theme/client/css/bootstrap.min.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('theme/client/css/font-awesome.min.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('theme/client/css/elegant-icons.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('theme/client/css/nice-select.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('theme/client/css/jquery-ui.min.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('theme/client/css/owl.carousel.min.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('theme/client/css/slicknav.min.css')}}" type="text/css">
+<link rel="stylesheet" href="{{asset('theme/client/css/style.css')}}" type="text/css">
+
+@yield('css')
 
 

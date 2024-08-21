@@ -13,7 +13,7 @@ class Promotion extends Model
     protected $table = 'khuyen_mais';
 
     protected $fillable = [
-        'khuyen_mais.id',
+        'id',
         'ten_khuyen_mai',
         'ma_khuyen_mai',
         'loai_khuyen_mai',
@@ -22,19 +22,17 @@ class Promotion extends Model
         'ngay_bat_dau',
         'ngay_ket_thuc',
         'mo_ta',
-        'khuyen_mais.created_at as created_at',
-        'khuyen_mais.updated_at as updated_at',
+        'created_at',
+        'updated_at',
     ] ;
 
     public function getAll(){
-        $this->fillable[] = 'trang_thais.ten_trang_thai as ten_trang_thai';
-        $query = Db::table($this->table)->select($this->fillable)->join('trang_thais','khuyen_mais.trang_thai_id','=','trang_thais.id')->get();
+        $query = Db::table($this->table)->select($this->fillable)->get();
         return $query;
     }
 
     public function getById($id){
-        $this->fillable[] = 'trang_thais.ten_trang_thai as ten_trang_thai';
-        $query = Db::table($this->table)->select($this->fillable)->join('trang_thais','khuyen_mais.trang_thai_id','=','trang_thais.id')->where('khuyen_mais.id',$id)->first();
+        $query = Db::table($this->table)->select($this->fillable)->where('id',$id)->first();
         return $query;
     }
 

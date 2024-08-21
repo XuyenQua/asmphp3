@@ -22,7 +22,7 @@ class DonHangSeeder extends Seeder
                 'tong_tien'=> rand(100000, 10000000),
                 'phuong_thuc_thanh_toan'=> rand(1,4),
                 'khuyen_mai'=> rand(1,4),
-                'trang_thai_id'=> rand(1,10),
+                'trang_thai_id'=> 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ];

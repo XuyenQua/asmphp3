@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="{{ route('index') }}"><img src="theme/client/img/logo.png" alt=""></a>
+                    <a href="{{ route('index') }}"><img src="{{asset('theme/client/img/logo.png')}}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
